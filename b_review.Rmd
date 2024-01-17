@@ -1,0 +1,31 @@
+---
+title: "b_review"
+author: "Lily Zhao"
+date: "2024-01-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(janitor)
+
+df <- read_csv("b_review.csv") %>%
+  clean_names() %>%
+  mutate(is_coral_gardening = str_starts(reef_restoration_and_adaptation_plan_report_technique, "Coral gardening")) %>%
+  filter(is_coral_gardening == TRUE) %>%
+  select(
+    is_coral_gardening, reference, year_published, year_data_collection, type_of_source, 
+    action, reef_restoration_and_adaptation_plan_report_technique, ecological_outcome, 
+    economic_outcome, social_outcome, feasibility_reasons_for_failure_success,
+    starts_with("ser"),
+    contains("variable"),
+    contains("attribute")
+  )
+
+
+
+
+```
+

@@ -24,7 +24,7 @@ df <- read_csv("b_review.csv") %>%
     contains("attribute")
   )
 
-
+write_csv(df, "cg_clean_subset.csv")
 
 
 ```
